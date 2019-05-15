@@ -10,24 +10,17 @@
 <body>
 	<div class="container">
 
-
-		<h1>Inscription d'une personne</h1>
+	<h1>Inscription d'une personne</h1>
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
+			<f:validateBean>
 				<h:outputLabel value="Nom" />
 				<h:inputText id="nom" value="#{personneBean.personne.nom}" />
 				<h:outputLabel value="Prenom" />
 				<h:inputText id="prenom" value="#{personneBean.personne.prenom}" />
 				<h:outputLabel value="Age" />
 				<h:inputText id="age" value="#{personneBean.personne.age}" />
-
-				<h:outputLabel value="Marié(e) avec" />
-				<h:selectOneMenu
-					value="#{personneBean.personne.personne.idPersonne}">
-					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
-					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
-						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
-				</h:selectOneMenu>
+			</f:validateBean>
 			</h:panelGrid>
 
 			<h:commandButton action="#{personneBean.ajouterPersonne}"
@@ -40,7 +33,7 @@
 					value="#{personneBean.personne.idPersonne}" />
 			</h:panelGrid>
 
-			<h:commandButton action="#{personneBean.supprimmerPersonne}"
+			<h:commandButton action="#{personneBean.supprimerPersonne}"
 				value="supprimer" />
 			<h:commandButton action="#{personneBean.modifierPersonne}"
 				value="modifier" />

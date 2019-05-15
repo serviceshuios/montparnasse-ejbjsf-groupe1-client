@@ -24,6 +24,8 @@ public class PersonneBean implements Serializable{
 	private ICoeurRemote service;
 	
 	private Personne personne = new Personne();
+	
+	
 
 	public ICoeurRemote getService() {
 		return service;
@@ -43,6 +45,7 @@ public class PersonneBean implements Serializable{
 	
 	public void ajouterPersonne() {
 		service.ajouterPersonne(personne);
+		personne = new Personne();
 	}
 
 	public List<Personne> listerPersonnes(){
