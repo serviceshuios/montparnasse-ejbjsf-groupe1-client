@@ -21,7 +21,7 @@
 					itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
 				<h:outputLabel value="Choisir une deuxieme personne" />
-				<h:selectOneMenu id="personne" value="#{personneBean.personne.personne}">
+				<h:selectOneMenu id="personne2" value="#{personneBean.personne.personne}">
 					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
 					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" 
 					itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
