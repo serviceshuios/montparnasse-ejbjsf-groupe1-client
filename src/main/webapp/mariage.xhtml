@@ -4,33 +4,27 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>Personne</title>
+	<title>Mariage</title>
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 </h:head>
 <body>
 	<div class="container">
 
-	<h1>Inscription d'une personne</h1>
 		<h:form>
+			
+			<h2>Mise a jour status civilité</h2>
 			<h:panelGrid columns="2" cellpadding="5">
-			<f:validateBean>
-				<h:outputLabel value="Nom" />
-				<h:inputText id="nom" value="#{personneBean.personne.nom}" />
-				<h:outputLabel value="Prenom" />
-				<h:inputText id="prenom" value="#{personneBean.personne.prenom}" />
-				<h:outputLabel value="Age" />
-				<h:inputText id="age" value="#{personneBean.personne.age}" />
-			</f:validateBean>
+				<h:outputLabel value="Marié(e) avec" />
+				<h:selectOneMenu
+					value="#{personneBean.personne.personne}">
+					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
+					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
+						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
+				</h:selectOneMenu>
 			</h:panelGrid>
 
-			<h:commandButton action="#{personneBean.ajouterPersonne}"
-				value="ajouter" />
-				
-			<h:commandButton action="#{personneBean.modifierPersonne}"
-				value="modifier" />
-				
-			<h:commandButton action="#{personneBean.supprimerPersonne}"
-				value="supprimer" />
+			<h:commandButton action="#{personneBean.seMarier}" value="marier" />
+
 
 			<div>
 				<h2>Liste des personnes</h2>
@@ -53,17 +47,22 @@
 						<h:outputText value="#{p.age}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">MODIFIER</f:facet>
-						<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}"
-							value="Modif">
-							<f:setPropertyActionListener target="#{personneBean.personne}"
-								value="#{p}"></f:setPropertyActionListener>
-						</h:commandLink>
+						<f:facet name="header">Marié(e) avec:</f:facet>
+						<h:outputText value="#{p.personne.nom}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Supprimer</f:facet>
-						<h:commandLink action="#{personneBean.getPersonneSuppr(p.idPersonne)}"
+						<h:commandLink
+							action="#{personneBean.getPersonneSuppr(p.idPersonne)}"
 							value="Supprimer">
+							<f:setPropertyActionListener value="#{p.idPersonne}"
+								target="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Modifier</f:facet>
+						<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}"
+							value="Modifier">
 							<f:setPropertyActionListener target="#{personneBean.personne}"
 								value="#{p}"></f:setPropertyActionListener>
 						</h:commandLink>
