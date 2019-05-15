@@ -11,65 +11,47 @@
 	<div class="container">
 		<h1>Inscription d'un lotissement</h1>
 		<h:form>
-			<h:panelGrid columns="5" cellpadding="5">
-				<h:outputLabel value="Nom du Lot" />
-				<h:inputText id="nomLot"
-					value="#{lotissementBean.lotissement.nomLot}" />
+			<h:panelGrid columns="2" cellpadding="5">
+				<f:validateBean>
+					<h:outputLabel value="Numéro du Lot" />
+					<h:inputText id="numLot"
+						value="#{lotissementBean.lotissement.numLot}" />
 
-				<h:outputLabel value="Adresse du Lot" />
-				<h:inputText id="adresseLot"
-					value="#{lotissementBean.lotissement.adresseLot}" />
+					<h:outputLabel value="Adresse du Lot" />
+					<h:inputText id="adresseLot"
+						value="#{lotissementBean.lotissement.adresseLot}" />
 
-				<h:outputLabel value="Date de Creation" />
-				<h:inputText id="dateCreation"
-					value="#{lotissementBean.lotissement.dateCreation}">
-					<f:convertDateTime />
-				</h:inputText>
+					<h:outputLabel value="Date de Creation" />
+					<h:inputText id="dateCreation"
+						value="#{lotissementBean.lotissement.dateCreation}">
+						<f:convertDateTime />
+					</h:inputText>
 
-				<h:outputLabel value="Prix" />
-				<h:inputText id="prix" value="#{lotissementBean.lotissement.prix}" />
+					<h:outputLabel value="Prix" />
+					<h:inputText id="prix" value="#{lotissementBean.lotissement.prix}" />
 
 
-				<h:outputLabel value="Appartient à :" />
-				<h:selectOneMenu
-					value="#{lotissementBean.lotissement.personne.idPersonne}">
-					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
-					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
-						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
-				</h:selectOneMenu>
+
+				</f:validateBean>
 			</h:panelGrid>
+
 
 			<h:commandButton action="#{lotissementBean.ajouterLotissement}"
 				value="ajouter" />
 			<br />
-			
 
-
-			<h2>Acheter un lot</h2>
-			<h:panelGrid columns="1" cellpadding="5">
-				<h:outputLabel value="Appartient à :" />
-				<h:selectOneMenu
-					value="#{lotissementBean.lotissement.personne.idPersonne}">
-					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
-					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
-						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
-				</h:selectOneMenu>
-			</h:panelGrid>
-
-			<h:commandButton action="#{lotissementBean.acheterLotissement}"
-				value="acheter" />
 
 			<br />
 			<h2>Liste des personnes</h2>
-			<h:dataTable value="#{lotissementBean.listerPersonnes()}" var="l"
+			<h:dataTable value="#{lotissementBean.listerLotissements()}" var="l"
 				border="1" class="table table-striped">
 				<h:column>
 					<f:facet name="header">ID</f:facet>
 					<h:outputText value="#{l.idLot}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">NOM du LOT</f:facet>
-					<h:outputText value="#{l.nomLot}" />
+					<f:facet name="header">NUM du LOT</f:facet>
+					<h:outputText value="#{l.numLot}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">ADRESSE</f:facet>
@@ -79,10 +61,12 @@
 					<f:facet name="header">Prix</f:facet>
 					<h:outputText value="#{l.prix}" />
 				</h:column>
+				<!-- 
 				<h:column>
 					<f:facet name="header">Appartient à::</f:facet>
 					<h:outputText value="#{l.personne.nom}" />
 				</h:column>
+				 -->
 				<h:column>
 					<f:facet name="header">Supprimer</f:facet>
 					<h:commandLink
