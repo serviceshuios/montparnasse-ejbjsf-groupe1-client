@@ -1,6 +1,9 @@
 package com.infotel.beans;
 
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -41,6 +44,7 @@ public class PersonneBean implements Serializable{
 	public void ajouterPersonne() {
 		service.ajouterPersonne(personne);
 	}
+
 	public List<Personne> listerPersonnes(){
 		return service.listerPersonnes();
 	}
