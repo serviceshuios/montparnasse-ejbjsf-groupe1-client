@@ -50,8 +50,8 @@
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="Marié(e) avec" />
 				<h:selectOneMenu
-					value="#{personneBean.personne.personne.idPersonne}">
-					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
+					value="#{personneBean.personne.personne}">
+					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
 					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
 						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
@@ -105,6 +105,6 @@
 			</div>
 		</h:form>
 	</div>
-	</div>
+	
 </body>
 </html>
