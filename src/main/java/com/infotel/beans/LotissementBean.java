@@ -53,6 +53,7 @@ public class LotissementBean implements Serializable {
 
 	public void ajouterLotissement() {
 		service.ajouterLotissement(lotissement);
+		lotissement = new Lotissement();
 	}
 
 	public List<Lotissement> listerLotissements() {
@@ -68,12 +69,12 @@ public class LotissementBean implements Serializable {
 
 	}
 
-	public void supprimerLotissement(Lotissement l) {
-		service.supprimerLotissement(l);
+	public void supprimerLotissement() {
+		service.supprimerLotissement(lotissement);
 	}
 
-	public void modifierLotissement(Lotissement l) {
-		service.modifierLotissement(l);
+	public void modifierLotissement() {
+		service.modifierLotissement(lotissement);
 	}
 
 	public void acheterLotissement(Personne p, Lotissement l) {

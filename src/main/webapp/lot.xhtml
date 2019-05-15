@@ -29,9 +29,6 @@
 
 					<h:outputLabel value="Prix" />
 					<h:inputText id="prix" value="#{lotissementBean.lotissement.prix}" />
-
-
-
 				</f:validateBean>
 			</h:panelGrid>
 
@@ -39,9 +36,11 @@
 			<h:commandButton action="#{lotissementBean.ajouterLotissement}"
 				value="ajouter" />
 			<br />
+			<h:commandButton action="#{lotissementBean.modifierLotissement}"
+				value="modifier" />
 
 
-			<br />
+
 			<h2>Liste des personnes</h2>
 			<h:dataTable value="#{lotissementBean.listerLotissements()}" var="l"
 				border="1" class="table table-striped">
@@ -61,21 +60,18 @@
 					<f:facet name="header">Prix</f:facet>
 					<h:outputText value="#{l.prix}" />
 				</h:column>
-				<!-- 
-				<h:column>
-					<f:facet name="header">Appartient à::</f:facet>
-					<h:outputText value="#{l.personne.nom}" />
-				</h:column>
-				 -->
+
 				<h:column>
 					<f:facet name="header">Supprimer</f:facet>
 					<h:commandLink
-						action="#{lotissementBean.getLotissementSuppr(l.idLot)}"
+						action="#{lotissementBean.getLotissementSuppr(p.idLot)}"
 						value="Supprimer">
 						<f:setPropertyActionListener value="#{l.idLot}"
 							target="#{lotissementBean.lotissement.idLot}"></f:setPropertyActionListener>
 					</h:commandLink>
 				</h:column>
+
+
 				<h:column>
 					<f:facet name="header">Modifier</f:facet>
 					<h:commandLink action="#{lotissementBean.getLotissement(l.idLot)}"
