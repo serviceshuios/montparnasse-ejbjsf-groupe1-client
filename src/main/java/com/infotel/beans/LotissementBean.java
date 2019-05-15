@@ -69,15 +69,15 @@ public class LotissementBean implements Serializable {
 	}
 
 	public void supprimerLotissement(Lotissement l) {
-
+		service.supprimerLotissement(l);
 	}
 
 	public void modifierLotissement(Lotissement l) {
-
+		service.modifierLotissement(l);
 	}
 
 	public void acheterLotissement(Personne p, Lotissement l) {
-
+		service.acheterLotissement(p, l);
 	}
 
 }
