@@ -11,28 +11,55 @@
 	<div class="container">
 		<h1>Inscription d'un lotissement</h1>
 	<h:form>
-		<h:panelGrid columns="2" cellpadding="5">
+		<h:panelGrid columns="5" cellpadding="5">
 			<h:outputLabel value="Nom du Lot" />
 			<h:inputText id="nomLot" value="#{lotissementBean.lotissement.nomLot}" />
+		
 			<h:outputLabel value="Adresse du Lot" />
 			<h:inputText id="adresseLot" value="#{lotissementBean.lotissement.adresseLot}" />
+			
 			<h:outputLabel value="Date de Creation" />
 			<h:inputText id="dateCreation" value="#{lotissementBean.lotissement.dateCreation}">
 			<f:convertDateTime />
 			</h:inputText>
+			
 			<h:outputLabel value="Prix" />
 			<h:inputText id="prix" value="#{lotissementBean.lotissement.prix}" />
-			<br/>
+			
 			
 			<h:outputLabel value="Appartient à :" />
-				<h:selectOneMenu value="#{personneBean.personne.idPersonne}">
+				<h:selectOneMenu value="#{lotissementBean.lotissement.personne.idPersonne}">
 				<f:selectItem itemValue="0" itemLabel="Choisissez une personne"/>
 				<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}"/>
 			</h:selectOneMenu>
 		</h:panelGrid>
 		
 		<h:commandButton action="#{lotissementBean.ajouterLotissement}" value="ajouter" />
-		
+		<br/>
+		<h2>Supprimer/Modifier Lot</h2>
+			<h:panelGrid columns="1" cellpadding="5">
+				<h:outputLabel value="ID du Lotissement" />
+				<h:inputText id="idLot"
+					value="#{lotissementBean.lotissement.idLot}" />
+			</h:panelGrid>
+
+			<h:commandButton action="#{lotissementBean.supprimmerLotissement}"
+				value="supprimer" />
+			<h:commandButton action="#{lotissementBean.modifierLotissement}"
+				value="modifier" />
+				
+				
+		<h2>Acheter un lot</h2>
+			<h:panelGrid columns="1" cellpadding="5">
+			<h:outputLabel value="Appartient à :" />
+				<h:selectOneMenu value="#{lotissementBean.lotissement.personne.idPersonne}">
+				<f:selectItem itemValue="0" itemLabel="Choisissez une personne"/>
+				<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}"/>
+			</h:selectOneMenu>
+		</h:panelGrid>
+			
+			<h:commandButton action="#{lotissementBean.acheterLotissement}" value="acheter" />
+			
 		<br/>
 		<h2>Liste des personnes</h2>
 		<h:dataTable  value="#{lotissementBean.listerPersonnes()}" var="l" border="1" class="table table-striped">
@@ -58,7 +85,7 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">Supprimer</f:facet>
-			<h:commandLink action="#{lotissementBean.supprimerLotissement(l.idLot)}" value="Supprimer">
+			<h:commandLink action="#{lotissementBean.getLotissementSuppr(l.idLot)}" value="Supprimer">
 			<f:setPropertyActionListener value="#{l.idLot}" target="#{lotissementBean.lotissement.idLot}"></f:setPropertyActionListener>
 			</h:commandLink>
 		</h:column>

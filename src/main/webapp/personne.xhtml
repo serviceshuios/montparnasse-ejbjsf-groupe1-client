@@ -9,6 +9,8 @@
 </h:head>
 <body>
 	<div class="container">
+
+
 		<h1>Inscription d'une personne</h1>
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
@@ -28,14 +30,24 @@
 				</h:selectOneMenu>
 			</h:panelGrid>
 
-			<h:commandButton action="#{personneBean.ajouterPersonne}" value="ajouter" />
-			<h:commandButton action="#{personneBean.supprimmerPersonne}" value="supprimer" />
-			<h:commandButton action="#{personneBean.modifierPersonne}" value="modifier" />
+			<h:commandButton action="#{personneBean.ajouterPersonne}"
+				value="ajouter" />
 
+			<h2>Supprimer/Modifier</h2>
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="ID de Personne" />
 				<h:inputText id="idPersonne"
 					value="#{personneBean.personne.idPersonne}" />
+			</h:panelGrid>
+
+			<h:commandButton action="#{personneBean.supprimmerPersonne}"
+				value="supprimer" />
+			<h:commandButton action="#{personneBean.modifierPersonne}"
+				value="modifier" />
+
+
+			<h2>Mise a jour status civilité</h2>
+			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="Marié(e) avec" />
 				<h:selectOneMenu
 					value="#{personneBean.personne.personne.idPersonne}">
@@ -44,11 +56,10 @@
 						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
-			
-			<h:commandButton action="#{personneBean.seMarier}"
-				value="Marier" />
-			
-			
+
+			<h:commandButton action="#{personneBean.seMarier}" value="marier" />
+
+
 			<div>
 				<h2>Liste des personnes</h2>
 				<h:dataTable value="#{personneBean.listerPersonnes()}" var="p"

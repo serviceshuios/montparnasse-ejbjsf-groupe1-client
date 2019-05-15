@@ -3,6 +3,7 @@
 	<name>ConfigClientJSFEjb-Grp1</name>
 	<comment></comment>
 	<projects>
+		<project>ConfigEjbSessionEntity-Grp1</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -7,9 +7,10 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import com.infotel.ejb.IBanqueRemote;
+import com.infotel.ejb.ICoeurRemote;
 import com.infotel.metier.Lotissement;
 import com.infotel.metier.Personne;
+
 
 @Named
 @SessionScoped
@@ -27,11 +28,13 @@ public class LotissementBean implements Serializable{
 	
 	private Personne personne = new Personne();
 
-	public IRemote getService() {
+	
+
+	public ICoeurRemote getService() {
 		return service;
 	}
 
-	public void setService(IRemote service) {
+	public void setService(ICoeurRemote service) {
 		this.service = service;
 	}
 
