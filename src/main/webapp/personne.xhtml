@@ -10,64 +10,89 @@
 <body>
 	<div class="container">
 		<h1>Inscription d'une personne</h1>
-	<h:form>
-		<h:panelGrid columns="2" cellpadding="5">
-			<h:outputLabel value="Nom" />
-			<h:inputText id="nom" value="#{personneBean.personne.nom}" />
-			<h:outputLabel value="Prenom" />
-			<h:inputText id="prenom" value="#{personneBean.personne.prenom}" />
-			<h:outputLabel value="Age" />
-			<h:inputText id="age" value="#{personneBean.personne.age}" />
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="Nom" />
+				<h:inputText id="nom" value="#{personneBean.personne.nom}" />
+				<h:outputLabel value="Prenom" />
+				<h:inputText id="prenom" value="#{personneBean.personne.prenom}" />
+				<h:outputLabel value="Age" />
+				<h:inputText id="age" value="#{personneBean.personne.age}" />
 
-			<h:outputLabel value="Marié(e) avec" />
-				<h:selectOneMenu value="#{personneBean.personne.personne.idPersonne}">
-				<f:selectItem itemValue="0" itemLabel="Choisissez une personne"/>
-				<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}"/>
-			</h:selectOneMenu>
-		</h:panelGrid>
-		
-		<h:commandButton action="#{personneBean.ajouterPersonne}" value="ajouter" />
-		
-		
+				<h:outputLabel value="Marié(e) avec" />
+				<h:selectOneMenu
+					value="#{personneBean.personne.personne.idPersonne}">
+					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
+					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
+						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
 
-		<div >
-		<h2>Liste des personnes</h2>
-		<h:dataTable  value="#{personneBean.listerPersonnes()}" var="p" border="1" class="table table-striped">
-		<h:column>
-			<f:facet name="header">ID</f:facet>
-			<h:outputText value="#{p.idPersonne}"/>
-		</h:column>
-		<h:column>
-			<f:facet name="header">NOM</f:facet>
-			<h:outputText value="#{p.nom}"/>
-		</h:column>
-		<h:column>
-			<f:facet name="header">PRENOM</f:facet>
-			<h:outputText value="#{p.prenom}"/>
-		</h:column>
-		<h:column>
-			<f:facet name="header">Age</f:facet>
-			<h:outputText value="#{p.age}"/>
-		</h:column>
-		<h:column>
-			<f:facet name="header">Marié(e) avec:</f:facet>
-			<h:outputText value="#{p.personne.nom}"/>
-		</h:column>
-		<h:column>
-			<f:facet name="header">Supprimer</f:facet>
-			<h:commandLink action="#{personneBean.supprimerPersonne(p.idPersonne)}" value="Supprimer">
-			<f:setPropertyActionListener value="#{p.idPersonne}" target="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener>
-			</h:commandLink>
-		</h:column>
-		<h:column>
-			<f:facet name="header">Modifier</f:facet>
-			<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}" value="Modifier">
-			<f:setPropertyActionListener target="#{personneBean.personne}" value="#{p}"></f:setPropertyActionListener>
-			</h:commandLink>
-		</h:column>
-		</h:dataTable>
-		</div>	
-	</h:form>
+			<h:commandButton action="#{personneBean.ajouterPersonne}" value="ajouter" />
+			<h:commandButton action="#{personneBean.supprimmerPersonne}" value="supprimer" />
+			<h:commandButton action="#{personneBean.modifierPersonne}" value="modifier" />
+
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="ID de Personne" />
+				<h:inputText id="idPersonne"
+					value="#{personneBean.personne.idPersonne}" />
+				<h:outputLabel value="Marié(e) avec" />
+				<h:selectOneMenu
+					value="#{personneBean.personne.personne.idPersonne}">
+					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
+					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
+						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+			
+			<h:commandButton action="#{personneBean.seMarier}"
+				value="Marier" />
+			
+			
+			<div>
+				<h2>Liste des personnes</h2>
+				<h:dataTable value="#{personneBean.listerPersonnes()}" var="p"
+					border="1" class="table table-striped">
+					<h:column>
+						<f:facet name="header">ID</f:facet>
+						<h:outputText value="#{p.idPersonne}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">NOM</f:facet>
+						<h:outputText value="#{p.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">PRENOM</f:facet>
+						<h:outputText value="#{p.prenom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Age</f:facet>
+						<h:outputText value="#{p.age}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Marié(e) avec:</f:facet>
+						<h:outputText value="#{p.personne.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Supprimer</f:facet>
+						<h:commandLink
+							action="#{personneBean.getPersonneSuppr(p.idPersonne)}"
+							value="Supprimer">
+							<f:setPropertyActionListener value="#{p.idPersonne}"
+								target="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Modifier</f:facet>
+						<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}"
+							value="Modifier">
+							<f:setPropertyActionListener target="#{personneBean.personne}"
+								value="#{p}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</div>
+		</h:form>
 	</div>
 	</div>
 </body>
