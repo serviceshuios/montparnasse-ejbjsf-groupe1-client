@@ -20,10 +20,11 @@
 	<div class="container">
 		<h1>Inscription d'une personne</h1>
 		<h:form>
-			<h:panelGrid columns="1" cellpadding="5">
+			<h:panelGrid columns="2" cellpadding="2">
 				<f:validateBean>
 					<h:inputHidden id="idPersonne"
 						value="#{personneBean.personne.idPersonne}" />
+						<br/>
 					<h:outputLabel value="Nom" />
 					<h:inputText id="nom" value="#{personneBean.personne.nom}" />
 					<h:outputLabel value="Prenom" />
@@ -32,14 +33,11 @@
 					<h:inputText id="age" value="#{personneBean.personne.age}" />
 				</f:validateBean>
 			</h:panelGrid>
-
+			<br/>
 			<h:commandButton action="#{personneBean.ajouterPersonne}"
 				value="ajouter" />
-
 			<h:commandButton action="#{personneBean.modifierPersonne}"
 				value="modifier" />
-
-
 
 			<div>
 				<h2>Liste des personnes</h2>
