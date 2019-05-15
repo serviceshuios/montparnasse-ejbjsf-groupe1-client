@@ -49,22 +49,6 @@
 						<f:facet name="header">Marié(e) avec:</f:facet>
 						<h:outputText value="#{p.personne.nom}" />
 					</h:column>
-					<h:column>
-						<f:facet name="header">Supprimer</f:facet>
-						<h:commandLink action="#{personneBean.getPersonneSuppr(p.idPersonne)}"
-							value="Supprimer">
-							<f:setPropertyActionListener value="#{p.idPersonne}"
-								target="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener>
-						</h:commandLink>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Modifier</f:facet>
-						<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}"
-							value="Modifier">
-							<f:setPropertyActionListener target="#{personneBean.personne}"
-								value="#{p}"></f:setPropertyActionListener>
-						</h:commandLink>
-					</h:column>
 				</h:dataTable>
 			</div>
 		</h:form>

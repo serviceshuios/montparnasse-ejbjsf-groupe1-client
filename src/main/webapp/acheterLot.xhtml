@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>Mariage</title>
+	<title>Acheter un lot</title>
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 </h:head>
 <body>
@@ -12,17 +12,26 @@
 
 		<h:form>
 			
-			<h2>Mise a jour status civilité</h2>
+			<h2>Personnes</h2>
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="Marié(e) avec" />
-				<h:selectOneMenu id="personne" value="#{personneBean.personne.personne}">
+				<h:outputLabel value="Personnes disponbles" />
+				<h:selectOneMenu id="personne" value="#{personneBean.personne.idPersonne}">
 					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
 					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" 
 					itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
+			<h2>Achat d'un lotissement</h2>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="Lotissements disponibles" />
+				<h:selectOneMenu id="lotissement" value="#{lotissementBean.lotissement.idLot}">
+					<f:selectItem itemValue="null" itemLabel="Choisissez un lot" />
+					<f:selectItems value="#{lotissementBean.listerLotissements()}" var="p" 
+					itemValue="#{p.idLot}" itemLabel="#{p.numLot}, #{p.adresseLot}, #{p.dateCreation}, #{p.prix}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
 
-			<h:commandButton action="#{personneBean.seMarier}" value="marier" />
+			<h:commandButton action="#{lotissementBean.acheterLotissement}" value="acheter" />
 
 
 			<div>
@@ -46,24 +55,8 @@
 						<h:outputText value="#{p.age}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Marié(e) avec:</f:facet>
-						<h:outputText value="#{p.personne.nom}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Supprimer</f:facet>
-						<h:commandLink action="#{personneBean.getPersonneSuppr(p.idPersonne)}"
-							value="Supprimer">
-							<f:setPropertyActionListener value="#{p.idPersonne}"
-								target="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener>
-						</h:commandLink>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Modifier</f:facet>
-						<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}"
-							value="Modifier">
-							<f:setPropertyActionListener target="#{personneBean.personne}"
-								value="#{p}"></f:setPropertyActionListener>
-						</h:commandLink>
+						<f:facet name="header">a achete le lot:</f:facet>
+						<h:outputText value="#{p.lotissement.numLot}" />
 					</h:column>
 				</h:dataTable>
 			</div>
