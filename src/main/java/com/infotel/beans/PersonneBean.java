@@ -1,14 +1,11 @@
 package com.infotel.beans;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import com.infotel.ejb.IBanqueRemote;
+import com.infotel.ejb.ICoeurRemote;
 import com.infotel.metier.Personne;
 
 @Named
@@ -18,18 +15,18 @@ public class PersonneBean implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	
 	@EJB
 	private ICoeurRemote service;
 	
 	private Personne personne = new Personne();
 
-	public IRemote getService() {
+	public ICoeurRemote getService() {
 		return service;
 	}
 
-	public void setService(IRemote service) {
+	public void setService(ICoeurRemote service) {
 		this.service = service;
 	}
 
@@ -41,12 +38,26 @@ public class PersonneBean implements Serializable{
 		this.personne = personne;
 	}
 	
-	public void ajouterPersonne(Personne p);
-	public List<Personne> listerPersonnes();
-	public Personne getPersonne(long idPersonne);
-	public Personne getPersonneSuppr(long idPersonne);
-	public void supprimerPersonne(Personne p);
-	public void modifierPersonne(Personne p);
-	public void seMarier(Personne p1, Personne p2);
+	public void ajouterPersonne() {
+		service.ajouterPersonne(personne);
+	}
+	public List<Personne> listerPersonnes(){
+		return service.listerPersonnes();
+	}
+	public Personne getPersonne(long idPersonne) {
+		return service.getPersonne(idPersonne);
+	}
+	public Personne getPersonneSuppr(long idPersonne) {
+		return service.getPersonneSuppr(idPersonne);
+	}
+	public void supprimerPersonne(Personne p) {
+		service.supprimerPersonne(p);
+	}
+	public void modifierPersonne(Personne p) {
+		service.modifierPersonne(p);
+	}
+	public void seMarier(Personne p1, Personne p2) {
+		service.seMarier(p1, p2);
+	}
 
 }

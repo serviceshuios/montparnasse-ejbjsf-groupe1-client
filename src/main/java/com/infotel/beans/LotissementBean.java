@@ -1,13 +1,15 @@
 package com.infotel.beans;
 
-import java.io.Serializable;
-import java.util.List;
+
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+<<<<<<< HEAD
 import com.infotel.ejb.ICoeurRemote;
+=======
+>>>>>>> ef548708032b17446697b67d6566451be3136cb5
 import com.infotel.metier.Lotissement;
 import com.infotel.metier.Personne;
 
@@ -19,7 +21,7 @@ public class LotissementBean implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	
 	@EJB
 	private ICoeurRemote service;
@@ -28,8 +30,11 @@ public class LotissementBean implements Serializable{
 	
 	private Personne personne = new Personne();
 
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> ef548708032b17446697b67d6566451be3136cb5
 	public ICoeurRemote getService() {
 		return service;
 	}
@@ -54,13 +59,27 @@ public class LotissementBean implements Serializable{
 		this.personne = personne;
 	}
 	
-	public void ajouterLotissement(Lotissement l);
-	public List<Lotissement> listerLotissements();
-	public Lotissement getLotissement(long idLot);
-	public Lotissement getLotissementSuppr(long idLot);
-	public void supprimerLotissement(Lotissement l);
-	public void modifierLotissement(Lotissement l);
+	public void ajouterLotissement() {
+		service.ajouterLotissement(lotissement);
+	}
+	public List<Lotissement> listerLotissements(){
+		return service.listerLotissements();
+	}
+	public Lotissement getLotissement(long idLot) {
+		return service.getLotissement
+	}
+	public Lotissement getLotissementSuppr(long idLot) {
+		
+	}
+	public void supprimerLotissement(Lotissement l) {
+		
+	}
+	public void modifierLotissement(Lotissement l) {
+		
+	}
 	
-	public void acheterLotissement(Personne p, Lotissement l);
+	public void acheterLotissement(Personne p, Lotissement l) {
+		
+	}
 	
 }
