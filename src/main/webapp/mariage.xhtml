@@ -15,11 +15,13 @@
 			<h2>Mise a jour status civilité</h2>
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="Marié(e) avec" />
-				<h:selectOneMenu
-					value="#{personneBean.personne.personne}">
+				<h:selectOneMenu id="personne"value="#{personneBean.personne.personne}">
 					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
-					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
-						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
+					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
+				</h:selectOneMenu>
+				<h:selectOneMenu id="personne"value="#{personneBean.personne.personne}">
+					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
+					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
 
@@ -52,8 +54,7 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Supprimer</f:facet>
-						<h:commandLink
-							action="#{personneBean.getPersonneSuppr(p.idPersonne)}"
+						<h:commandLink action="#{personneBean.getPersonneSuppr(p.idPersonne)}"
 							value="Supprimer">
 							<f:setPropertyActionListener value="#{p.idPersonne}"
 								target="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener>
