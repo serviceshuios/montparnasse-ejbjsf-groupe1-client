@@ -7,30 +7,39 @@
 	<title>Personne</title>
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 </h:head>
+<head>
+<h:outputLink value="personne.xhtml">Creer une personne</h:outputLink>
+<br />
+<h:outputLink value="lot.xhtml">Creer un lotissement</h:outputLink>
+<br />
+<h:outputLink value="mariage.xhtml">Mariage</h:outputLink>
+<br />
+<h:outputLink value="acheterLot.xhtml">Acheter un lotissement</h:outputLink>
+</head>
 <body>
 	<div class="container">
-
-	<h1>Inscription d'une personne</h1>
+		<h1>Inscription d'une personne</h1>
 		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-			<f:validateBean>
-				<h:outputLabel value="Nom" />
-				<h:inputText id="nom" value="#{personneBean.personne.nom}" />
-				<h:outputLabel value="Prenom" />
-				<h:inputText id="prenom" value="#{personneBean.personne.prenom}" />
-				<h:outputLabel value="Age" />
-				<h:inputText id="age" value="#{personneBean.personne.age}" />
-			</f:validateBean>
+			<h:panelGrid columns="1" cellpadding="5">
+				<f:validateBean>
+					<h:inputHidden id="idPersonne"
+						value="#{personneBean.personne.idPersonne}" />
+					<h:outputLabel value="Nom" />
+					<h:inputText id="nom" value="#{personneBean.personne.nom}" />
+					<h:outputLabel value="Prenom" />
+					<h:inputText id="prenom" value="#{personneBean.personne.prenom}" />
+					<h:outputLabel value="Age" />
+					<h:inputText id="age" value="#{personneBean.personne.age}" />
+				</f:validateBean>
 			</h:panelGrid>
 
 			<h:commandButton action="#{personneBean.ajouterPersonne}"
 				value="ajouter" />
-				
+
 			<h:commandButton action="#{personneBean.modifierPersonne}"
 				value="modifier" />
-				 
-			<h:commandButton action="#{personneBean.supprimerPersonne}"
-				value="supprimer" />
+
+
 
 			<div>
 				<h2>Liste des personnes</h2>
@@ -55,23 +64,25 @@
 					<h:column>
 						<f:facet name="header">MODIFIER</f:facet>
 						<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}"
-							value="Modif">
+							value="Modifier">
 							<f:setPropertyActionListener target="#{personneBean.personne}"
 								value="#{p}"></f:setPropertyActionListener>
 						</h:commandLink>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Supprimer</f:facet>
-						<h:commandLink action="#{personneBean.getPersonneSuppr(p.idPersonne)}"
+						<h:commandLink
+							action="#{personneBean.supprimerPersonne(p.idPersonne)}"
 							value="Supprimer">
-							<f:setPropertyActionListener target="#{personneBean.personne}"
-								value="#{p}"></f:setPropertyActionListener>
+							<f:setPropertyActionListener
+								target="#{personneBean.personne.idPersonne}"
+								value="#{p.idPersonne}"></f:setPropertyActionListener>
 						</h:commandLink>
 					</h:column>
 				</h:dataTable>
 			</div>
 		</h:form>
 	</div>
-	
+
 </body>
 </html>

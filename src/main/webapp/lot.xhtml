@@ -7,12 +7,25 @@
 	<title>Lotissement</title>
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 </h:head>
+<head>
+<h:outputLink value="personne.xhtml">Creer une personne</h:outputLink>
+<br />
+<h:outputLink value="lot.xhtml">Creer un lotissement</h:outputLink>
+<br />
+<h:outputLink value="mariage.xhtml">Mariage</h:outputLink>
+<br />
+<h:outputLink value="acheterLot.xhtml">Acheter un lotissement</h:outputLink>
+</head>
 <body>
 	<div class="container">
+
 		<h1>Inscription d'un lotissement</h1>
 		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
+			<h:panelGrid columns="2" cellpadding="2">
 				<f:validateBean>
+					<h:inputHidden id="idLot"
+						value="#{lotissementBean.lotissement.idLot}" />
+					<br />
 					<h:outputLabel value="Numéro du Lot" />
 					<h:inputText id="numLot"
 						value="#{lotissementBean.lotissement.numLot}" />
@@ -26,61 +39,60 @@
 						value="#{lotissementBean.lotissement.dateCreation}">
 						<f:convertDateTime />
 					</h:inputText>
-
 					<h:outputLabel value="Prix" />
 					<h:inputText id="prix" value="#{lotissementBean.lotissement.prix}" />
 				</f:validateBean>
 			</h:panelGrid>
 
-
 			<h:commandButton action="#{lotissementBean.ajouterLotissement}"
 				value="ajouter" />
-			<br />
 			<h:commandButton action="#{lotissementBean.modifierLotissement}"
 				value="modifier" />
 
-
-
-			<h2>Liste des personnes</h2>
-			<h:dataTable value="#{lotissementBean.listerLotissements()}" var="l"
-				border="1" class="table table-striped">
-				<h:column>
-					<f:facet name="header">ID</f:facet>
-					<h:outputText value="#{l.idLot}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">NUM du LOT</f:facet>
-					<h:outputText value="#{l.numLot}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">ADRESSE</f:facet>
-					<h:outputText value="#{l.adresseLot}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Prix</f:facet>
-					<h:outputText value="#{l.prix}" />
-				</h:column>
-
-				<h:column>
-					<f:facet name="header">Supprimer</f:facet>
-					<h:commandLink
-						action="#{lotissementBean.getLotissementSuppr(p.idLot)}"
-						value="Supprimer">
-						<f:setPropertyActionListener value="#{l.idLot}"
-							target="#{lotissementBean.lotissement.idLot}"></f:setPropertyActionListener>
-					</h:commandLink>
-				</h:column>
-
-
-				<h:column>
-					<f:facet name="header">Modifier</f:facet>
-					<h:commandLink action="#{lotissementBean.getLotissement(l.idLot)}"
-						value="Modifier">
-						<f:setPropertyActionListener
-							target="#{lotissementBean.lotissement}" value="#{l}"></f:setPropertyActionListener>
-					</h:commandLink>
-				</h:column>
-			</h:dataTable>
+			<br />
+			<div>
+				<h2>Liste des personnes</h2>
+				<h:dataTable value="#{lotissementBean.listerLotissements()}" var="l"
+					border="1" class="table table-striped">
+					<h:column>
+						<f:facet name="header">ID</f:facet>
+						<h:outputText value="#{l.idLot}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">NUM du LOT</f:facet>
+						<h:outputText value="#{l.numLot}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">ADRESSE</f:facet>
+						<h:outputText value="#{l.adresseLot}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Prix</f:facet>
+						<h:outputText value="#{l.prix}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Date de creation</f:facet>
+						<h:outputText value="#{l.dateCreation}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Modifier</f:facet>
+						<h:commandLink action="#{lotissementBean.getLotissement(l.idLot)}"
+							value="Modifier">
+							<f:setPropertyActionListener
+								target="#{lotissementBean.lotissement}" value="#{l}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Supprimer</f:facet>
+						<h:commandLink
+							action="#{lotissementBean.supprimerLotissement(l.idLot)}"
+							value="Supprimer">
+							<f:setPropertyActionListener
+								target="#{lotissementBean.lotissement.idLot}" value="#{l.idLot}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</div>
 		</h:form>
 	</div>
 </body>

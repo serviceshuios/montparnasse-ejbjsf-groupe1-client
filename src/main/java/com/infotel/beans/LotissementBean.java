@@ -64,17 +64,14 @@ public class LotissementBean implements Serializable {
 		return service.getLotissement(idLot);
 	}
 
-	public Lotissement getLotissementSuppr(long idLot) {
-		return service.getLotissementSuppr(idLot);
 
-	}
-
-	public void supprimerLotissement() {
-		service.supprimerLotissement(lotissement);
+	public long supprimerLotissement(long idLot) {
+		return service.supprimerLotissement(idLot);
 	}
 
 	public void modifierLotissement() {
 		service.modifierLotissement(lotissement);
+		lotissement = new Lotissement();
 	}
 
 	public void acheterLotissement(Personne p, Lotissement l) {
