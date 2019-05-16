@@ -25,7 +25,25 @@ public class LotissementBean implements Serializable {
 
 	private Lotissement lotissement = new Lotissement();
 
-	private Personne personne = new Personne();
+	private List<Personne> personnes;
+	private Personne personne  = new Personne();
+	
+
+	public Personne getPersonne() {
+		return personne;
+	}
+
+	public void setPersonne(Personne personne) {
+		this.personne = personne;
+	}
+
+	public List<Personne> getPersonnes() {
+		return service.listerPersonnes();
+	}
+
+	public void setPersonnes(List<Personne> personnes) {
+		this.personnes = personnes;
+	}
 
 	public ICoeurRemote getService() {
 		return service;
@@ -43,13 +61,6 @@ public class LotissementBean implements Serializable {
 		this.lotissement = lotissement;
 	}
 
-	public Personne getPersonne() {
-		return personne;
-	}
-
-	public void setPersonne(Personne personne) {
-		this.personne = personne;
-	}
 
 	public void ajouterLotissement() {
 		service.ajouterLotissement(lotissement);
@@ -74,8 +85,10 @@ public class LotissementBean implements Serializable {
 		lotissement = new Lotissement();
 	}
 
-	public void acheterLotissement(long idPersonne, long idLot) {
-		service.acheterLotissement(idPersonne, idLot);
+	public void acheterLotissement() {
+		System.out.println("methode atteinte");
+		System.out.println("idPers="+lotissement);
+		service.acheterLotissement(personne.getIdPersonne(), lotissement.getIdLot());
 	}
 
 }

@@ -22,20 +22,27 @@
 			<h2>Mise a jour status civilité</h2>
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="Choisir une premiere personne" />
-				<h:selectOneMenu id="personne" value="#{personneBean.personne.personne}">
-					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
-					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" 
-					itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
+				<h:selectOneMenu id="personne"
+					value="#{personneBean.personne.idPersonne}">
+					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
+					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
+						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
 				<h:outputLabel value="Choisir une deuxieme personne" />
-				<h:selectOneMenu id="personne2" value="#{personneBean.personne.personne}">
-					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
-					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" 
-					itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
+				<h:selectOneMenu id="personne2"
+					value="#{personneBean.personne2.idPersonne}">
+					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
+					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p"
+						itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
 
-			<h:commandButton action="#{personneBean.seMarier}" value="marier" />
+			
+
+			<h:commandButton value="EMPRISONNER">
+				<f:actionListener binding="#{personneBean.seMarier1()}" />
+				<f:actionListener binding="#{personneBean.seMarier2()}" />
+			</h:commandButton>
 
 
 			<div>
@@ -66,6 +73,6 @@
 			</div>
 		</h:form>
 	</div>
-	
+
 </body>
 </html>
