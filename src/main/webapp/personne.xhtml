@@ -8,13 +8,18 @@
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 </h:head>
 <head>
-<h:outputLink value="personne.xhtml">Creer une personne</h:outputLink>
-<br />
-<h:outputLink value="lot.xhtml">Creer un lotissement</h:outputLink>
-<br />
-<h:outputLink value="mariage.xhtml">Mariage</h:outputLink>
-<br />
-<h:outputLink value="acheterLot.xhtml">Acheter un lotissement</h:outputLink>
+
+<div class="container">
+	<h:outputLink value="personne.xhtml"
+		class="btn btn-primary text-warning">CRUD PERSONNE</h:outputLink>
+	<h:outputLink value="lot.xhtml" class="btn btn-primary text-warning">CRUD LOTISSEMENT</h:outputLink>
+	<h:outputLink value="mariage.xhtml"
+		class="btn btn-primary text-warning">MARIAGE</h:outputLink>
+	<h:outputLink value="acheterLot.xhtml"
+		class="btn btn-primary text-warning">ACHAT LOTISSEMENT</h:outputLink>
+</div>
+
+
 </head>
 <body>
 	<div class="container">
@@ -24,7 +29,7 @@
 				<f:validateBean>
 					<h:inputHidden id="idPersonne"
 						value="#{personneBean.personne.idPersonne}" />
-						<br/>
+					<br />
 					<h:outputLabel value="Nom" />
 					<h:inputText id="nom" value="#{personneBean.personne.nom}" />
 					<h:outputLabel value="Prenom" />
@@ -33,7 +38,7 @@
 					<h:inputText id="age" value="#{personneBean.personne.age}" />
 				</f:validateBean>
 			</h:panelGrid>
-			<br/>
+			<br />
 			<h:commandButton action="#{personneBean.ajouterPersonne}"
 				value="ajouter" />
 			<h:commandButton action="#{personneBean.modifierPersonne}"

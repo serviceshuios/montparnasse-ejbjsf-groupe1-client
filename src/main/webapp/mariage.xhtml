@@ -8,13 +8,15 @@
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 </h:head>
 <head>
-<h:outputLink value="personne.xhtml">Creer une personne</h:outputLink>
-<br />
-<h:outputLink value="lot.xhtml">Creer un lotissement</h:outputLink>
-<br />
-<h:outputLink value="mariage.xhtml">Mariage</h:outputLink>
-<br />
-<h:outputLink value="acheterLot.xhtml">Acheter un lotissement</h:outputLink>
+<div class="container">
+	<h:outputLink value="personne.xhtml"
+		class="btn btn-primary text-warning">CRUD PERSONNE</h:outputLink>
+	<h:outputLink value="lot.xhtml" class="btn btn-primary text-warning">CRUD LOTISSEMENT</h:outputLink>
+	<h:outputLink value="mariage.xhtml"
+		class="btn btn-primary text-warning">MARIAGE</h:outputLink>
+	<h:outputLink value="acheterLot.xhtml"
+		class="btn btn-primary text-warning">ACHAT LOTISSEMENT</h:outputLink>
+</div>
 </head>
 <body>
 	<div class="container">

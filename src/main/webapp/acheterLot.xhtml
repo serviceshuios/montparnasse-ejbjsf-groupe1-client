@@ -7,6 +7,17 @@
 	<title>Acheter un lot</title>
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 </h:head>
+<head>
+<div class="container">
+	<h:outputLink value="personne.xhtml"
+		class="btn btn-primary text-warning">CRUD PERSONNE</h:outputLink>
+	<h:outputLink value="lot.xhtml" class="btn btn-primary text-warning">CRUD LOTISSEMENT</h:outputLink>
+	<h:outputLink value="mariage.xhtml"
+		class="btn btn-primary text-warning">MARIAGE</h:outputLink>
+	<h:outputLink value="acheterLot.xhtml"
+		class="btn btn-primary text-warning">ACHAT LOTISSEMENT</h:outputLink>
+</div>
+</head>
 <body>
 	<div class="container">
 
@@ -16,7 +27,7 @@
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="Personnes disponbles" />
 				<h:selectOneMenu id="personne" value="#{lotissementBean.personne.idPersonne}">
-					<f:selectItem itemValue="null" itemLabel="Choisissez une personne" />
+					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
 					<f:selectItems value="#{lotissementBean.getPersonnes()}" var="p" 
 					itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
@@ -25,7 +36,7 @@
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="Lotissements disponibles" />
 				<h:selectOneMenu id="lotissement" value="#{lotissementBean.lotissement.idLot}">
-					<f:selectItem itemValue="null" itemLabel="Choisissez un lot" />
+					<f:selectItem itemValue="0" itemLabel="Choisissez un lot" />
 					<f:selectItems value="#{lotissementBean.listerLotissements()}" var="p" 
 					itemValue="#{p.idLot}" itemLabel="#{p.numLot}, #{p.adresseLot}, #{p.dateCreation}, #{p.prix}" />
 				</h:selectOneMenu>
