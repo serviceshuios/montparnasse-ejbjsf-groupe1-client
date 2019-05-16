@@ -28,7 +28,7 @@
 				<h:outputLabel value="Personnes disponbles" />
 				<h:selectOneMenu id="personne" value="#{lotissementBean.personne.idPersonne}">
 					<f:selectItem itemValue="0" itemLabel="Choisissez une personne" />
-					<f:selectItems value="#{lotissementBean.getPersonnes()}" var="p" 
+					<f:selectItems value="#{personneBean.listerPersonnes()}" var="p" 
 					itemValue="#{p.idPersonne}" itemLabel="#{p.nom}, #{p.prenom}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
@@ -43,9 +43,6 @@
 			</h:panelGrid>
 
 			<h:commandButton action="#{lotissementBean.acheterLotissement()}" value="acheter">
-<!-- 				<f:setPropertyActionListener -->
-<!-- 								target="#{lotissementBean.personne.idPersonne}" -->
-<!-- 								value="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener> -->
 			</h:commandButton>
 
 
@@ -75,7 +72,7 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Personne</f:facet>
-						<h:outputText value="#{l.personne.nom}" />
+						<h:outputText value="#{l.personne.prenom} #{l.personne.nom}" />
 					</h:column>
 					
 				</h:dataTable>
