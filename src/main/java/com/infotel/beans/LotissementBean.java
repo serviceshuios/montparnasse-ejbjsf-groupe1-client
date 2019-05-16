@@ -86,8 +86,6 @@ public class LotissementBean implements Serializable {
 	}
 
 	public void acheterLotissement() {
-		System.out.println("methode atteinte");
-		System.out.println("idPers="+lotissement);
 		service.acheterLotissement(personne.getIdPersonne(), lotissement.getIdLot());
 	}
 

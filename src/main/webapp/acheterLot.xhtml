@@ -51,23 +51,31 @@
 
 			<div>
 				<h2>Liste des personnes</h2>
-				<h:dataTable value="#{lotissementBean.getPersonnes()}" var="p"
+				<h:dataTable value="#{lotissementBean.listerLotissements()}" var="l"
 					border="1" class="table table-striped">
 					<h:column>
 						<f:facet name="header">ID</f:facet>
-						<h:outputText value="#{p.idPersonne}" />
+						<h:outputText value="#{l.idLot}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">NOM</f:facet>
-						<h:outputText value="#{p.nom}" />
+						<f:facet name="header">NUM</f:facet>
+						<h:outputText value="#{l.numLot}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">PRENOM</f:facet>
-						<h:outputText value="#{p.prenom}" />
+						<f:facet name="header">ADRESSE</f:facet>
+						<h:outputText value="#{l.adresseLot}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Age</f:facet>
-						<h:outputText value="#{p.age}" />
+						<f:facet name="header">DateCreation</f:facet>
+						<h:outputText value="#{l.dateCreation}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Prix</f:facet>
+						<h:outputText value="#{l.prix}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Personne</f:facet>
+						<h:outputText value="#{l.personne.nom}" />
 					</h:column>
 					
 				</h:dataTable>
