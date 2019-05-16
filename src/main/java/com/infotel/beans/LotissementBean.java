@@ -74,8 +74,8 @@ public class LotissementBean implements Serializable {
 		lotissement = new Lotissement();
 	}
 
-	public void acheterLotissement(long idPersonne, long idLotissement) {
-		service.acheterLotissement(idPersonne, idLotissement);
+	public void acheterLotissement(long idPersonne, long idLot) {
+		service.acheterLotissement(idPersonne, idLot);
 	}
 
 }

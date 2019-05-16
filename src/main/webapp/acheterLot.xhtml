@@ -31,7 +31,11 @@
 				</h:selectOneMenu>
 			</h:panelGrid>
 
-			<h:commandButton action="#{lotissementBean.acheterLotissement}" value="acheter" />
+			<h:commandButton action="#{lotissementBean.acheterLotissement(lotissement.personne.idPersonne, lotissement.idLot)}" value="acheter">
+				<f:setPropertyActionListener
+								target="#{lotissementBean.personne.idPersonne}"
+								value="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener>
+			</h:commandButton>
 
 
 			<div>

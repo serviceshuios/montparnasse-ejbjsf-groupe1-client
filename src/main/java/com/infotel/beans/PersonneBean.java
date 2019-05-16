@@ -9,6 +9,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import com.infotel.ejb.ICoeurRemote;
+import com.infotel.metier.Lotissement;
 import com.infotel.metier.Personne;
 
 @Named
@@ -24,8 +25,16 @@ public class PersonneBean implements Serializable{
 	private ICoeurRemote service;
 	
 	private Personne personne = new Personne();
+	private Lotissement lotissement = new Lotissement();
 	
-	
+
+	public Lotissement getLotissement() {
+		return lotissement;
+	}
+
+	public void setLotissement(Lotissement lotissement) {
+		this.lotissement = lotissement;
+	}
 
 	public ICoeurRemote getService() {
 		return service;
