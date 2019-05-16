@@ -62,8 +62,8 @@ public class PersonneBean implements Serializable{
 		service.modifierPersonne(personne);
 		personne = new Personne();
 	}
-	public void seMarier(Personne p1, Personne p2) {
-		service.seMarier(p1, p2);
+	public void seMarier(long idPers1, long idPers2) {
+		service.seMarier(idPers1, idPers2);
 	}
 
 }
